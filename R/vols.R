@@ -64,7 +64,9 @@ calibrate <- function(options, valuedate, model="quadratic",atmvol=0,
     vol <- calibrate.quadvol(options, valuedate, precision, type)
   } else if(model=="sabr"){
     vol <- calibrate.sabrvol(options, valuedate, atmvol, precision)
-  } else{
+  } else if(model=="SVI"){
+    vol <- calibrate.svivol(options, valuedate, atmvol, precision)
+  }else{
     stop("Unknown volatility model: only sabr and quadratic implemented.")
   }
   return(vol)
